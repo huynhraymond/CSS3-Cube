@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body {
+            height: 100%;
+            padding: 0;
+            perspective: 1000px;
+            perspective-origin: 50% 35%;
+            transform-style: preserve-3d;
+            padding-top: 4em;
+        }
+
+        div {
+            height: 200px;
+            width: 200px;
+
+
+            margin: 5% auto;
+
+            transform-style: preserve-3d;
+        }
+
+        input {
+            height: 200px;
+            width:  200px;
+
+            border: none;
+            color: rgba(220, 5, 24, 0.25);
+            font-weight: bolder;
+            text-align: center;
+            font-size: 5em;
+            overflow: hidden;
+
+            position: absolute;
+
+            background-color: rgba(21, 17, 172, 0.22);
+
+            opacity: .70;
+
+        }
+
+        div.cube > input.front {
+            transform: translateZ(100px);
+        }
+
+        div.cube > input.back {
+            transform:  rotateY(180deg) translateZ(100px);
+        }
+
+        div.cube > input.top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        div.cube > input.bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        div.cube > input.left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        div.cube > input.right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        div.cube > input.innerFront {
+            transform: translateZ(50px) scale(0.5);
+        }
+
+        div.cube > input.innerBack {
+            transform:  rotateY(180deg) translateZ(50px) scale(0.5);
+        }
+
+        div.cube > input.innerTop {
+            transform: rotateX(90deg) translateZ(50px) scale(0.5);
+        }
+
+        div.cube > input.innerBottom {
+            transform: rotateX(-90deg) translateZ(50px) scale(0.5);
+        }
+
+        div.cube > input.innerLeft {
+            transform: rotateY(-90deg) translateZ(50px) scale(0.5);
+        }
+
+        div.cube > input.innerRight {
+            transform: rotateY(90deg) translateZ(50px) scale(0.5);
+        }
+
+        div.split > input.top {
+            transform: rotateY(0deg) translateZ(300px);
+        }
+
+        div.split > input.bottom {
+            transform: rotateY(30deg) translateZ(300px);
+        }
+
+        div.split > input.front {
+            transform: rotateY(60deg) translateZ(300px);
+        }
+
+        div.split > input.back {
+            transform: rotateY(90deg) translateZ(300px);
+        }
+
+        div.split > input.left {
+            transform: rotateY(120deg) translateZ(300px);
+        }
+
+        div.split > input.right {
+            transform: rotateY(150deg) translateZ(300px);
+        }
+
+        div.split > input.innerTop {
+            transform: rotateY(180deg) translateZ(300px);
+        }
+
+        div.split > input.innerBottom {
+            transform: rotateY(210deg) translateZ(300px);
+        }
+
+        div.split > input.innerFront {
+            transform: rotateY(240deg) translateZ(300px);
+        }
+
+        div.split > input.innerBack {
+            transform: rotateY(270deg) translateZ(300px);
+        }
+
+        div.split > input.innerLeft {
+            transform: rotateY(300deg) translateZ(300px);
+        }
+
+        div.split > input.innerRight {
+            transform: rotateY(330deg) translateZ(300px);
+        }
+
+        @keyframes kf {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        div.rotating {
+            animation: kf 10s infinite linear;
+            animation-fill-mode: forwards;
+        }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var div = document.querySelector('div');
+            div.addEventListener('click', function() {
+                div.classList.toggle('rotating');
+            });
+
+            div.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+                if ( div.classList.contains('split') ) {
+                    div.classList.remove('split');
+                    div.classList.add('cube');
+                }
+
+                else {
+                    div.classList.remove('cube');
+                    div.classList.add('split');
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="cube">
+        <input type="text" class="top" />
+        <input type="text" class="back" />
+        <input type="text" class="front" />
+        <input type="text" class="bottom" />
+        <input type="text" class="left" />
+        <input type="text" class="right" />
+        <input type="text" class="innerTop" />
+        <input type="text" class="innerBack" />
+        <input type="text" class="innerFront" />
+        <input type="text" class="innerBottom" />
+        <input type="text" class="innerLeft" />
+        <input type="text" class="innerRight" />
+    </div>
+</body>
+</html>

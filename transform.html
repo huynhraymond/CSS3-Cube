@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            margin: 10em auto;
+
+            transition: transform 1000ms ease;
+        }
+
+
+        div.animate {
+            background-color: aqua;
+            transform: rotate(45deg) translate(500px) scale(1.5);
+        }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var div = document.querySelector('div');
+            div.addEventListener('click', function() {
+                div.classList.toggle('animate');
+            })
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

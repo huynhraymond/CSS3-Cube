@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li:nth-child(2) {
+            background-color: red;
+        }
+
+        li:nth-child(2) ~ li {
+            background-color: aqua;
+        }
+
+        div.container p:nth-of-type(3) {
+            background-color: antiquewhite;
+        }
+
+        p:empty {
+            background-color: blueviolet;
+            min-height: 100px;
+        }
+
+        div.afterBefore::after {
+            content: 'This is div::after';
+        }
+
+        div.afterBefore::before {
+            content: 'This is div::before'
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Cuxi Huynh</li>
+        <li>Cuxi Huynh</li>
+        <li>Cuxi Huynh</li>
+    </ul>
+
+    <div class="container">
+        <div>Rosy</div>
+        <div>Rosy</div>
+        <p>Steven</p>
+        <p>Raymond</p>
+        <div>Rosy</div>
+        <p>Cuxi</p>
+    </div>
+
+    <p></p>
+    <p></p>
+    <div class="afterBefore"></div>
+
+    <input type="file" />
+</body>
+    <script>
+        var input = document.querySelector('input');
+        input.addEventListener('change', function() {
+            console.log(this.files);
+        })
+    </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+
+        div.ball {
+            width: 2em;
+            height: 2em;
+
+            background-color: darkred;
+            border-radius: 100%;
+
+            position: absolute;
+            top: 1em;
+            left: 1em;
+
+            animation: kf 500ms ease infinite alternate;
+        }
+
+        @keyframes kf {
+            0% {
+                top: calc(100% - 2em);
+            }
+
+            100% {
+                top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+</body>
+</html>

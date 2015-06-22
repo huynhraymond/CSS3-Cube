@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        li[data-mime="application/pdf"]::before {
+            display: inline-block;
+            height: 32px;
+            width: 32px;
+            content: '';
+            background: url("mime/file-formats-icons/png/pdf19.png");
+            background-size: 100%;
+        }
+    </style>
+
+    <script>
+        function createElement(elementType, parent, innerHtml, custom) {
+            var element = document.createElement(elementType);
+
+            if ( parent ) { parent.appendChild(element); }
+
+            if ( innerHtml ) { element.innerHTML = innerHtml; }
+
+            if ( typeof custom !== 'undefined' ) {
+                for ( var prop in custom ) {
+                    element.setAttribute( prop, custom[prop] );
+                }
+            }
+
+            return element;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var ul = document.querySelector('ul.files');
+            var input = document.querySelector('input');
+            input.addEventListener('change', function() {
+                while ( ul.firstChild) { ul.removeChild(ul.firstChild); }
+                var files = Array.prototype.slice.call(this.files);
+
+                files.forEach( function(file) {
+                    var li = createElement('li', ul, file.name);
+                    li.setAttribute('data-mime', file.type);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="file" multiple />
+    <ul class="files"></ul>
+</body>
+</html>
